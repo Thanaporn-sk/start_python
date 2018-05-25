@@ -1,0 +1,60 @@
+import pyodbc 
+
+def getFieldDescription(columns):
+    retValue =''
+    slen = columns[3]
+    prec = columns[4]
+    if(columns[1].__name__ =='str'):
+        if (slen> 200):
+            slen = 200
+        retValue = 'VARCHAR (' + str(slen)+' BYTE)'
+    elif  (columns[1].__name__ =='int'):
+        if (slen>20):
+            slen = 20
+        retValue = 'NUMBER (' + str(slen)+')'   
+    elif  (columns[1].__name__ =='float'):
+        if (slen>20):
+                slen = 20
+        if (prec >5) :
+            prec = 2                
+        retValue = 'DECIMAL (10,2)'  #+ str(columns[3])+','+str(columns[4])+')'
+
+    elif  (columns[1].__name__ =='datetime'):
+        retValue = 'DATE' 
+    else :   
+        if (slen> 200):
+            slen = 200
+        retValue = 'VARCHAR (' + str(slen)+' BYTE)'
+    
+    return retValue
+
+def createDDLScript(cursor,tableName):
+    
+    sqlStr= 'CREATE TABLE '+ tableName +'(\n'
+    for columns in cursor.description:        
+        sqlStr +=  '\t' + columns[0] +' '+ getFieldDescription(columns) + ',\n'
+
+    sqlStr +=')'
+    print (sqlStr)    
+
+    return sqlStr
+
+
+db_file = r'''drive:\path\to\dbfile'''
+user = 'username'
+password = 'password'
+
+odbc_conn_str = 'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=%s;UID=%s;PWD=%s' %\
+                (db_file, user, password)
+
+conn = pyodbc.connect(odbc_conn_str)
+cursor = conn.cursor()
+cursor.execute('select * From table_name') 
+
+row_id = 0
+rows = cursor.fetchall()
+rowscount= len(cursor.description)
+sqlStr = createDDLScript(cursor,'table_name')
+file = open("table_name_ddl.sql","w")
+file.write(sqlStr)
+file.close()
