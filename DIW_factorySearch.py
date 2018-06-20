@@ -42,7 +42,7 @@ def start_program():
 	fclass = input('INPUT TYPE OF FACTORY (\'022\') :')
 	end_page = checkData(fclass)
 	print ('There are %s  pages' % end_page)
-	new_file = open(fclass + fname,'w')
+	new_file = open(fclass + fname,'w',encoding='ISO-8859-1')
 	new_file.write('<table  border=1 cellspacing=0 cellpadding=3 width=95%>')
 	for i in range(start_page,end_page + 1):
 		print ('Generating page no : %s' % i)	
