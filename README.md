@@ -27,3 +27,22 @@ Oracle
     
     
     
+
+
+
+------------------------------------
+ Change home directory jupyter in Anaconda 
+------------------------------------
+1. Open "Anaconda Prompt" and type jupyter notebook --generate-config
+
+2. Open file in C:\Users\username\.jupyter\jupyter_notebook_config.py
+
+3. Find and Change the line of #c.NotebookApp.notebook_dir = '' to c.NotebookApp.notebook_dir = 'c:\\your path\\'
+
+4. Then, go to the shortcut of Jupyter Notebook located in C:\Users\User_name\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Anaconda3 (64-bit)
+
+5. Do the right click and go to the Properties
+
+6. In the Target  remove %USERPROFILE% , then in Start in, type the same directory of 'c:\\your path\\' in jupyter_notebook_config.py
+
+ Try!
