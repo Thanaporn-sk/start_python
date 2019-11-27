@@ -1,0 +1,25 @@
+import sys
+import csv
+import os
+from dbfread import DBF
+
+
+def readDir(dirName):
+    listOfFile = os.listdir(dirName)
+    for file in listOfFile:       
+        fname=file.split(".",1)[0]
+        xport2csv(fname)
+
+def xport2csv(fname):
+    dbfFile= './input/'+fname+'.dbf'
+    outFile='./output/'+fname+'.csv'
+    print ('convert:'+dbfFile +': to :' + outFile)
+    table = DBF(dbfFile,ignore_missing_memofile=True)
+    
+    with open(outFile, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(table.field_names)
+        for record in table:
+            csvwriter.writerow(list(record.values()))
+
+readDir('./input/')
