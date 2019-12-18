@@ -16,7 +16,7 @@ def xport2csv(fname):
     print ('convert:'+dbfFile +': to :' + outFile)
     table = DBF(dbfFile,ignore_missing_memofile=True)
     
-    with open(outFile, 'w') as csvfile:
+    with open(outFile, 'w' , newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(table.field_names)
         for record in table:
