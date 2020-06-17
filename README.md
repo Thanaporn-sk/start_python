@@ -63,8 +63,11 @@ activate: C:\> <venv>\Scripts\activate.bat
  PIP  (install)
  ---------------------------------------
  python get-pip.py
+ 
  pip --version
+ 
  python -m pip install --upgrade pip
+ 
  python -m pip install pip==18.1
  
  
@@ -73,8 +76,11 @@ activate: C:\> <venv>\Scripts\activate.bat
 PIP (install  && uninstall package)
 --------------------------------------
 pip install pandas      #install pandas
+
 pip uninstall pandas    #uninstall pandas
+
 pip install pandas==0.25.3 # install pandas version specific
+
 
 pip freeze #check package installed in venv
 
