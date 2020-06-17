@@ -46,3 +46,35 @@ Oracle
 6. In the Target  remove %USERPROFILE% , then in Start in, type the same directory of 'c:\\your path\\' in jupyter_notebook_config.py
 
  Try!
+
+
+
+
+
+---------------------------------
+Python virtual env  (windows)
+--------------------------------
+create:  python -m venv c:\path\to\myenv
+
+activate: C:\> <venv>\Scripts\activate.bat
+    
+ 
+ ---------------------------------------
+ PIP  (install)
+ ---------------------------------------
+ python get-pip.py
+ pip --version
+ python -m pip install --upgrade pip
+ python -m pip install pip==18.1
+ 
+ 
+
+--------------------------------------
+PIP (install  && uninstall package)
+--------------------------------------
+pip install pandas      #install pandas
+pip uninstall pandas    #uninstall pandas
+pip install pandas==0.25.3 # install pandas version specific
+
+pip freeze #check package installed in venv
+
