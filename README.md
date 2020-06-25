@@ -84,3 +84,12 @@ pip install pandas==0.25.3 # install pandas version specific
 
 pip freeze #check package installed in venv
 
+------------------------------------------
+link python command in linux
+------------------------------------------
+sudo unlink /usr/bin/python
+sudo ln -s /usr/bin/python3.5 /usr/bin/python
+
+ls -la /usr/bin/python
+
+
