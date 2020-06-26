@@ -86,6 +86,7 @@ pip freeze #check package installed in venv
 
 $ pip freeze > requirements.txt
 $ pip install -r requirements.txt
+$ rmvirtualenv venv
 
 ------------------------------------------
 link python command in linux
