@@ -84,6 +84,9 @@ pip install pandas==0.25.3 # install pandas version specific
 
 pip freeze #check package installed in venv
 
+$ pip freeze > requirements.txt
+$ pip install -r requirements.txt
+
 ------------------------------------------
 link python command in linux
 ------------------------------------------
