@@ -97,3 +97,13 @@ sudo ln -s /usr/bin/python3.5 /usr/bin/python
 ls -la /usr/bin/python
 
 
+
+----------------------------------------------
+#convert .ipynb to .py
+---------------------------------------------
+
+pip install ipython
+pip install nbconvert
+
+$ ipython nbconvert --to script File.ipynb
+>> output File.py
