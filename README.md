@@ -107,3 +107,21 @@ pip install nbconvert
 
 $ ipython nbconvert --to script File.ipynb
 >> output File.py
+
+
+-------------------------------------------------------
+LookupError: unknown encoding: 874
+-------------------------------------------------------
+ref : https://medium.com/@winvinc/unknown-encoding-874-ec22cabb69b8
+
+
+add following to that file (Location “<Install path>\anaconda3\Lib\encodings\aliases.py”)
+--------------------------
+    #cp 874
+    '874' : 'cp874',
+    'ibm874' : 'cp874',
+    'iso_8859_11': 'cp874',
+    'iso8859_11' : 'cp874',
+    'windows_874': 'cp874',
+    
+
