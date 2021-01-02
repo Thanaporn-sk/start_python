@@ -124,4 +124,9 @@ add following to that file (Location “<Install path>\anaconda3\Lib\encodings\a
     'iso8859_11' : 'cp874',
     'windows_874': 'cp874',
     
+    
+    book lists
+    
+    
+    https://www.pythonkitchen.com/legally-free-python-books-list/?fbclid=IwAR3YF5v6J0eG9OtZA4DnnjExMOF6enGAvkqzNPJx2KbTKf1dXmM7lrIcBqk
 
