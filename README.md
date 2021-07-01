@@ -130,3 +130,34 @@ add following to that file (Location “<Install path>\anaconda3\Lib\encodings\a
     
     https://www.pythonkitchen.com/legally-free-python-books-list/?fbclid=IwAR3YF5v6J0eG9OtZA4DnnjExMOF6enGAvkqzNPJx2KbTKf1dXmM7lrIcBqk
 
+    ------------------------------------------------------------------------
+    windows power shell
+https://www.howtogeek.com/117192/how-to-run-powershell-commands-on-remote-computers/
+
+
+
+host computer
+	enable-PSRemoting -Force
+	 Enable-PSRemoting -SkipNetworkProfileCheck -Force
+
+
+worker
+
+	test-WSman host-ip-address
+	Enter-pssession -computerName sss -Credential user@domain
+	hostname.exe
+	get-netIPconfiguration
+	netstat -n
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "192.168.1.69"
+
+winrm quickconfig -transport:https
+netsh firewall add portopening TCP 5986 "WinRM over HTTPS"
+winrm set winrm/config/client @{TrustedHosts="10.0.5.35"}
+Set-Item wsman:\localhost\client\trustedhosts *
+
+---------------------------
+netsh advfirewall firewall set rule group="Windows Management Instrumentation (WMI)" new enable=yes
+
+    
+    
