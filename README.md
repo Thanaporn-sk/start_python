@@ -159,5 +159,21 @@ Set-Item wsman:\localhost\client\trustedhosts *
 ---------------------------
 netsh advfirewall firewall set rule group="Windows Management Instrumentation (WMI)" new enable=yes
 
+--------------------------------
+pfsense expanding hdd	(vmware)
+init 1
+gpart show
+gpart resize -i 1 ad0
+
+bsdlabel -e /dev/ad0s1
+
+-grow root system file
+**gpart delete -i 2 ad0s1
+swapoff /dev/label/swap0
+gpart resize -i 1 -s 88G ad0s1
+****growfs /dev/ad0s1a
+service growfs onestart
+
+gpart add -t freebsd-swap ad0s1	
     
     
