@@ -107,7 +107,8 @@ pip install nbconvert
 
 $ ipython nbconvert --to script File.ipynb
 >> output File.py
-
+	or
+$ jupyter nbconvert
 
 -------------------------------------------------------
 LookupError: unknown encoding: 874
