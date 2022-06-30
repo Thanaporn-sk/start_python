@@ -29,7 +29,7 @@ def query2sheet(ws,sqlstr):
 
 #### end of query2sheet
 
-
+os.environ['NLS_LANG']= 'AMERICAN_AMERICA.TH8TISASCII'  # for Thai language problem
 wb = xlwt.Workbook()
 ws = wb.add_sheet('temp_temp_table') # create new sheet : 
 sqlstr = 'select * from temp_table'
