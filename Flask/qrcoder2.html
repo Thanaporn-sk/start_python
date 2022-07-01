@@ -1,0 +1,65 @@
+<html>
+    <head>
+    <title>QRcode generator</title>
+        <style>
+            #rcorners {
+                      border-radius: 25px;
+                      border: 2px solid #73AD21;
+                      padding: 20px; 
+
+                }
+        </style>    
+        <script language = "javascript">
+            function generateQRcode(){
+                let formData = new FormData();
+                formData.append('data',document.getElementById('qrcode_data').value);
+                formData.append('version',document.getElementById('version').value);
+                formData.append('box_size',document.getElementById('box_size').value);
+                formData.append('box_border',document.getElementById('box_border').value);
+                formData.append('fill_color',document.getElementById('fill_color').value);
+                formData.append('back_color',document.getElementById('back_color').value);
+                fetch('http://localhost:5006/generate_qrcode',{
+                    method:'POST',
+                    body: formData
+                }).then((res) =>{
+                    res.body.getReader().read().then((img) =>{
+                        let imageByteArray = img.value;
+                        let stringValue = String.fromCharCode(...imageByteArray);
+                        let encodeValue = btoa(stringValue);
+                        //document.getElementById('qrcode_output').src = 'data:image/png;base64,${encodeValue}';
+                        document.getElementById('qrcode_output').src = 'data:image/png;base64,'+encodeValue;
+                    
+                    })
+                })
+                
+            }
+        </script>    
+    </head>
+    <body>
+        <H1>QRCODE ADVANCE</H1>
+        <div id='rcorners'>
+            <table>
+                <tr><td>version</td>
+                    <td>size</td>
+                    <td>border</td>
+                    <td>fill color</td>
+                    <td>background</td></tr>
+                <tr>
+                    <td><input type='text' id = 'version' name='version' value='4' onchange="generateQRcode()" /></td>
+                    <td><input type='text' id = 'box_size' name='box_size'  value='20' onchange="generateQRcode()" /></td>
+                    <td><input type='text' id = 'box_border' name='box_border'  value='4' onchange="generateQRcode()" /></td>
+                    <td><input type='text' id = 'fill_color' name='fill_color'  value='black' onchange="generateQRcode()" /></td>
+                    <td><input type='text' id = 'back_color' name='back_color'  value='white' onchange="generateQRcode()" /></td>
+                </tr>
+            </table>    
+        </div>
+        <br>
+        <div id='rcorners' align='center'>            
+
+            <label>Text:</label><input type='text' id='qrcode_data' name='qrcode' value='test' onchange="generateQRcode()" /><br>
+            <br>
+            <img id = "qrcode_output" src='' border='1'>
+        </div>
+        
+    </body>    
+</html>
