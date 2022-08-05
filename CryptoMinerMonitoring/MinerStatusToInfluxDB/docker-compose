@@ -1,0 +1,25 @@
+version: "3.5"
+
+services:
+  grafana8:
+    image: grafana/grafana:8.5.0
+    network_mode: "bridge"
+    container_name: grafana8
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/lib/docker/volumes/grafana_vol/_data:/var/lib/grafana
+
+    restart: always
+    user: "472"
+
+  influxdb2:
+    image: influxdb:2.2.0
+    network_mode: "bridge"
+    container_name: influxdb2
+    ports:
+      - "8086:8086"
+    volumes:
+        - /var/lib/docker/volumes/influxdb_vol/_data:/var/lib/influxdb2
+      
+    restart: always
