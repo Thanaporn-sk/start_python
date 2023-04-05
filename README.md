@@ -176,5 +176,16 @@ gpart resize -i 1 -s 88G ad0s1
 service growfs onestart
 
 gpart add -t freebsd-swap ad0s1	
-    
+
+
+=====================================================================================
+install windows 11 with local account
+
+Shift + F10
+cmd:
+ncpa.cpl
+-disable all network connection
+cmd:
+oobe\bypassnro
+
     
